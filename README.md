@@ -1,7 +1,45 @@
 <p align="center">
-  <a href="https://laravel.com" target="_blank">
-    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
-  </a>
+<a href="{{ url('/') }}">
+    <svg width="200" viewBox="0 0 680 400" role="img" xmlns="http://www.w3.org/2000/svg">
+        <title>PoGudang</title>
+
+        <!-- Roof / atap gudang -->
+        <polygon points="340,90 230,155 450,155" fill="#2d6aff"/>
+
+        <!-- Badan gudang -->
+        <rect x="238" y="155" width="204" height="120" rx="0" fill="#2355cc"/>
+
+        <!-- Pintu utama -->
+        <rect x="310" y="205" width="60" height="70" rx="6" fill="#0f172a"/>
+        <line x1="340" y1="205" x2="340" y2="275" stroke="#2d6aff" stroke-width="2"/>
+        <circle cx="326" cy="243" r="3" fill="#5b8aff"/>
+        <circle cx="354" cy="243" r="3" fill="#5b8aff"/>
+
+        <!-- Jendela kiri -->
+        <rect x="248" y="168" width="40" height="32" rx="4" fill="#0f172a"/>
+        <line x1="268" y1="168" x2="268" y2="200" stroke="#2d6aff" stroke-width="1.5"/>
+        <line x1="248" y1="184" x2="288" y2="184" stroke="#2d6aff" stroke-width="1.5"/>
+
+        <!-- Jendela kanan -->
+        <rect x="392" y="168" width="40" height="32" rx="4" fill="#0f172a"/>
+        <line x1="412" y1="168" x2="412" y2="200" stroke="#2d6aff" stroke-width="1.5"/>
+        <line x1="392" y1="184" x2="432" y2="184" stroke="#2d6aff" stroke-width="1.5"/>
+
+        <!-- Garis bawah -->
+        <rect x="238" y="271" width="204" height="4" fill="#1e40af"/>
+
+        <!-- Ventilasi atas -->
+        <rect x="325" y="78" width="30" height="16" rx="3" fill="#2355cc"/>
+
+        <!-- Teks PoGudang -->
+        <text x="340" y="318" text-anchor="middle" font-size="32" font-weight="500"
+              fill="#1e293b" font-family="sans-serif" letter-spacing="1">PoGudang</text>
+
+        <!-- Tagline -->
+        <text x="340" y="342" text-anchor="middle" font-size="13"
+              fill="#5b8aff" font-family="sans-serif" letter-spacing="2">SISTEM MANAJEMEN GUDANG</text>
+    </svg>
+</a>
 </p>
 
 <p align="center">
