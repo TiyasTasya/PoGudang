@@ -53,8 +53,8 @@ Ikuti langkah berikut untuk menjalankan project di lokal.
 Jika belum mendownload project ini, lakukan clone repository terlebih dahulu:
 
 ```bash
-git clone https://github.com/TiyasTasya/sidokbar.git
-cd sidokbar
+git clone https://github.com/TiyasTasya/PoGudang.git
+cd PoGudang
 ```
 
 ---
