@@ -24,7 +24,7 @@
 
 ---
 
-# Sistem Dokumentasi Barang (SIDOKBAR)
+# PoGudang
 
 Project ini dibangun menggunakan framework **Laravel** dan panel admin **Filament**.
 
