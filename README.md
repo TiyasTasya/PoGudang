@@ -1,6 +1,6 @@
 <p align="center">
 <a href="{{ url('/') }}">
-    <img src="https://raw.githubusercontent.com/USERNAME/REPO/main/pogudang-logo.svg"
+    <img src="https://raw.githubusercontent.com/TiyasTasya/PoGudang/main/pogudang-logo.svg"
          width="400" alt="PoGudang Logo">
 </a>
 </p>
