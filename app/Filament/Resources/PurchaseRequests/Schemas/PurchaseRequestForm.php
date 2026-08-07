@@ -7,6 +7,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Hidden;
 use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
@@ -66,8 +67,9 @@ class PurchaseRequestForm
                             ->searchable()
                             ->preload()
                             ->required()
-                            ->afterStateUpdated(fn(Set $set, Get $get) => static::hitungTotalHarga($set, $get))
                             ->live()
+                            ->afterStateHydrated(fn(Set $set, Get $get) => static::hitungTotalHarga($set, $get))
+                            ->afterStateUpdated(fn(Set $set, Get $get) => static::hitungTotalHarga($set, $get))
                             ->columnSpan(2),
 
                         TextInput::make('qty_pesan')
@@ -77,8 +79,8 @@ class PurchaseRequestForm
                             ->default(1)
                             ->minValue(1)
                             ->suffix('unit')
-                            ->afterStateUpdated(fn(Set $set, Get $get) => static::hitungTotalHarga($set, $get))
                             ->live()
+                            ->afterStateUpdated(fn(Set $set, Get $get) => static::hitungTotalHarga($set, $get))
                             ->columnSpan(1),
 
                         TextInput::make('pajak_persen')
@@ -89,10 +91,11 @@ class PurchaseRequestForm
                             ->minValue(0)
                             ->maxValue(100)
                             ->suffix('%')
-                            ->afterStateUpdated(fn(Set $set, Get $get) => static::hitungTotalHarga($set, $get))
                             ->live()
+                            ->afterStateUpdated(fn(Set $set, Get $get) => static::hitungTotalHarga($set, $get))
                             ->columnSpan(1),
 
+                        // Placeholder hanya untuk menampilkan teks di UI
                         Placeholder::make('total_harga_display')
                             ->label('Total Harga')
                             ->content(function (Get $get): string {
@@ -101,12 +104,10 @@ class PurchaseRequestForm
                             })
                             ->columnSpan(2),
 
-                        TextInput::make('total_harga')
-                            ->numeric()
-                            ->required()
+                        // Hidden component ini yang Wajib menyimpan nilai ke database
+                        Hidden::make('total_harga')
                             ->default(0)
-                            ->hidden()
-                            ->dehydrated(),
+                            ->dehydrated(true),
                     ]),
 
                 Section::make('Status & Keterangan')
@@ -167,6 +168,8 @@ class PurchaseRequestForm
         if ($barang) {
             $subTotal    = $barang->harga * $qty;
             $nominalPajak = $subTotal * ($pajakPersen / 100);
+
+            // Set ke field 'total_harga' (Hidden Component)
             $set('total_harga', $subTotal + $nominalPajak);
         }
     }

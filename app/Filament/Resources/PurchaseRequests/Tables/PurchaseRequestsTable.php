@@ -49,15 +49,20 @@ class PurchaseRequestsTable
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
 
-                TextColumn::make('total_harga') // ✅ Tambah total harga
+                TextColumn::make('total_harga')
                     ->label('Total Harga')
-                    ->money('IDR')
+                    ->numeric(
+                        decimalPlaces: 0,
+                        decimalSeparator: ',',
+                        thousandsSeparator: '.',
+                    )
+                    ->prefix('Rp ')
                     ->sortable(),
 
                 TextColumn::make('status')
                     ->label('Status')
                     ->badge()
-                    ->color(fn(string $state): string => match($state) { // ✅ Tambah warna badge
+                    ->color(fn(string $state): string => match ($state) { // ✅ Tambah warna badge
                         'Approved' => 'success',
                         'Rejected' => 'danger',
                         default     => 'warning', // Pending
@@ -80,9 +85,9 @@ class PurchaseRequestsTable
             ])
             ->recordActions([
                 ActionGroup::make([
-                ViewAction::make(),
-                EditAction::make(),
-                DeleteAction::make(),
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
                 ])
             ])
             ->toolbarActions([
