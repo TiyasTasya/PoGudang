@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Barangs;
 
+use App\Filament\Clusters\ManajemenBarangCluster;
 use App\Filament\Resources\Barangs\Pages\CreateBarang;
 use App\Filament\Resources\Barangs\Pages\EditBarang;
 use App\Filament\Resources\Barangs\Pages\ListBarangs;
@@ -15,23 +16,22 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
-use UnitEnum;
 
 class BarangResource extends Resource
 {
     protected static ?string $model = Barang::class;
 
-    protected static string | UnitEnum | null $navigationGroup = 'Manajemen Barang';
+    protected static ?string $cluster = ManajemenBarangCluster::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedArchiveBox;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTableCells;
 
-    protected static ?string $navigationLabel = 'Barang';
+    protected static ?string $navigationLabel = 'Tabel Barang';
 
-    protected static ?string $modelLabel = 'Barang';
+    protected static ?string $modelLabel = 'Tabel Barang';
 
     protected static ?string $pluralModelLabel = 'Data Barang';
 
-    protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 2;
 
     public static function form(Schema $schema): Schema
     {
