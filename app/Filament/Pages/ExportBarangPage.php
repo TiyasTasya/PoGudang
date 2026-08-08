@@ -6,13 +6,13 @@ use App\Filament\Clusters\ManajemenBarangCluster;
 use App\Filament\Resources\Barangs\Actions\ExportBarangPdf;
 use App\Filament\Resources\Barangs\Exports\BarangExporter;
 use BackedEnum;
+use Daljo25\FilamentTablerIcons\Enums\TablerIcon;
 use Filament\Actions\ExportAction;
 use Filament\Pages\Page;
-use Filament\Support\Icons\Heroicon;
 
 class ExportBarangPage extends Page
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedArrowDownTray;
+    protected static string|BackedEnum|null $navigationIcon = TablerIcon::FileExport;
 
     protected static ?string $cluster = ManajemenBarangCluster::class;
 

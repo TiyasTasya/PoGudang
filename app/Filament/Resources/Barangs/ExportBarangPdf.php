@@ -11,12 +11,14 @@ class ExportBarangPdf
     public static function make(): Action
     {
         return Action::make('exportPdf')
-            ->label('Export PDF')
+            ->label('Ekspor PDF')
             ->icon('heroicon-o-document-arrow-down')
             ->action(function () {
                 $barangs = Barang::orderBy('nama_barang')->get();
 
-                $pdf = Pdf::loadView('pdf.barangs', compact('barangs'));
+                $pdf = Pdf::loadView('pdf.barangs', [
+                    'barangs' => $barangs,
+                ])->setPaper('a4', 'portrait');
 
                 return response()->streamDownload(
                     fn () => print($pdf->output()),

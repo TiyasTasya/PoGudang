@@ -12,9 +12,9 @@ use App\Filament\Resources\Barangs\Schemas\BarangInfolist;
 use App\Filament\Resources\Barangs\Tables\BarangsTable;
 use App\Models\Barang;
 use BackedEnum;
+use Daljo25\FilamentTablerIcons\Enums\TablerIcon;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
 class BarangResource extends Resource
@@ -23,7 +23,7 @@ class BarangResource extends Resource
 
     protected static ?string $cluster = ManajemenBarangCluster::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTableCells;
+    protected static string|BackedEnum|null $navigationIcon = TablerIcon::Table;
 
     protected static ?string $navigationLabel = 'Tabel Barang';
 

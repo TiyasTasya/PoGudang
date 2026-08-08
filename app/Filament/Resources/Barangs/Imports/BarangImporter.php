@@ -16,22 +16,41 @@ class BarangImporter extends Importer
     {
         return [
             ImportColumn::make('kode_barang')
+                ->label('Kode Barang')
                 ->requiredMapping()
                 ->rules(['required', 'max:255']),
             ImportColumn::make('nama_barang')
+                ->label('Nama Barang')
                 ->requiredMapping()
                 ->rules(['required', 'max:255']),
             ImportColumn::make('satuan')
+                ->label('Satuan')
                 ->requiredMapping()
                 ->rules(['required']),
             ImportColumn::make('stok')
+                ->label('Stok')
                 ->requiredMapping()
                 ->numeric()
                 ->rules(['required', 'integer']),
             ImportColumn::make('harga')
+                ->label('Harga Satuan')
                 ->requiredMapping()
                 ->numeric()
                 ->rules(['required', 'integer']),
+        ];
+    }
+
+    /**
+     * Menambahkan templat baris contoh agar user tinggal mengisi data.
+     */
+    public static function csvXlsxHeaderExample(): array
+    {
+        return [
+            'kode_barang' => 'BRG-001',
+            'nama_barang' => 'Kertas A4 80gsm',
+            'satuan'      => 'box',
+            'stok'        => 50,
+            'harga'       => 45000,
         ];
     }
 
@@ -42,10 +61,10 @@ class BarangImporter extends Importer
 
     public static function getCompletedNotificationBody(Import $import): string
     {
-        $body = 'Your barang import has completed and ' . Number::format($import->successful_rows) . ' ' . str('row')->plural($import->successful_rows) . ' imported.';
+        $body = 'Proses impor data barang telah selesai. ' . Number::format($import->successful_rows) . ' baris berhasil diimpor.';
 
         if ($failedRowsCount = $import->getFailedRowsCount()) {
-            $body .= ' ' . Number::format($failedRowsCount) . ' ' . str('row')->plural($failedRowsCount) . ' failed to import.';
+            $body .= ' ' . Number::format($failedRowsCount) . ' baris gagal diimpor.';
         }
 
         return $body;

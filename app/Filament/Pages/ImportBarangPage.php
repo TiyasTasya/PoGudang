@@ -5,13 +5,14 @@ namespace App\Filament\Pages;
 use App\Filament\Clusters\ManajemenBarangCluster;
 use App\Filament\Resources\Barangs\Imports\BarangImporter;
 use BackedEnum;
+use Daljo25\FilamentTablerIcons\Enums\TablerIcon;
 use Filament\Actions\ImportAction;
 use Filament\Pages\Page;
-use Filament\Support\Icons\Heroicon;
+
 
 class ImportBarangPage extends Page
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedArrowUpTray;
+    protected static string|BackedEnum|null $navigationIcon = TablerIcon::FileUpload;
 
     protected static ?string $cluster = ManajemenBarangCluster::class;
 

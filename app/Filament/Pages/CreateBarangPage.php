@@ -13,13 +13,13 @@ use Filament\Schemas\Components\EmbeddedSchema;
 use Filament\Schemas\Concerns\InteractsWithSchemas;
 use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
+use Daljo25\FilamentTablerIcons\Enums\TablerIcon;
 
 class CreateBarangPage extends Page implements HasSchemas
 {
     use InteractsWithSchemas;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPlusCircle;
+    protected static string|BackedEnum|null $navigationIcon = TablerIcon::ShoppingCartPlus;
 
     protected static ?string $cluster = ManajemenBarangCluster::class;
 
